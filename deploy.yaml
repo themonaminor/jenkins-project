@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-app-jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-app-jenkins
+  template:
+    metadata:
+      labels:
+        app: aks-app-jenkins
+    spec:
+      containers:
+      - name: aks-app-jenkins
+        image: monaminor/aks-pipeline:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-app-jenkins
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: aks-app-jenkins
