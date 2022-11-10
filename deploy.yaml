@@ -12,6 +12,8 @@ spec:
       labels:
         app: aks-app-jenkins
     spec:
+      imagePullSecrets:
+      - name: myregistrykey
       containers:
       - name: aks-app-jenkins
         image: monaminor/aks-pipeline:latest
