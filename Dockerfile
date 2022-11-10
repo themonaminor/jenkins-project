@@ -6,7 +6,7 @@ unzip
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page284/built-better.zip /var/www/html/
 WORKDIR /var/www/html
 RUN unzip built-better.zip
-RUN cp -rvf htlm/* .
+RUN cp -rvf html/* .
 RUN rm -rf html built-better.zip
 CMD ["/usr/sbin/httpd","-D", "FOREGROUND"]
 EXPOSE 80
